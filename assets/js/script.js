@@ -15,7 +15,7 @@ form.addEventListener("submit", (e) => {
     console.log(newTaskObject);
     addCard(newTaskObject);
     task.push(newTaskObject);
-    
+    form.reset(); 
 })
 
 
