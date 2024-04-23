@@ -33,23 +33,23 @@
                 <!-- <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button> -->
             </div>
             <div class="modal-body p-4">
-                <form>
+                <form id="kanbanForm">
                     <!-- Title input -->
                     <div data-mdb-input-init class="form-outline mb-4">
                       <label class="form-label" for="taskTitle">Task Title</label>  
-                      <input type="text" id="taskTitle" class="form-control" />
+                      <input type="text" id="taskTitle" class="form-control" name="title"/>
                     </div>
 
                     <!-- Due Date input -->
                     <div data-mdb-input-init class="form-outline mb-4">
                       <label class="form-label" for="taskDueDate">Task Due Date</label>  
-                      <input type="date" id="taskDueDate" class="form-control" />
+                      <input type="date" id="taskDueDate" class="form-control" name="dueDate"/>
                     </div>
 
                     <!-- Task input -->
                     <div data-mdb-input-init class="form-outline mb-4">
                       <label class="form-label" for="taskArea">Your message</label>  
-                      <textarea id="taskArea" rows="4" class="form-control"></textarea>
+                      <textarea id="taskArea" rows="4" class="form-control" name="taskArea"></textarea>
                     </div>
 
                     <!-- Submit button -->

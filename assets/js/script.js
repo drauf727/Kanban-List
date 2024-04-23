@@ -2,6 +2,19 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
+const task = [];
+var form = document.querySelector("#kanbanForm");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    var newTask = new FormData(form);
+    console.log(newTask);
+    var newTaskObject = Object.fromEntries(newTask);
+    console.log(newTaskObject);
+    task.push(newTaskObject);
+
+})
+
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
 
