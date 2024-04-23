@@ -4,6 +4,8 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 const task = [];
 var form = document.querySelector("#kanbanForm");
+const toDoLane = document.querySelector("#todo-cards");
+
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -11,9 +13,27 @@ form.addEventListener("submit", (e) => {
     console.log(newTask);
     var newTaskObject = Object.fromEntries(newTask);
     console.log(newTaskObject);
+    addCard(newTaskObject);
     task.push(newTaskObject);
-
+    
 })
+
+
+function addCard (nto) {
+    title = nto.title;
+    dueDate = nto.dueDate;
+    taskDesc = nto.taskArea;
+    let toDoCard = document.createElement("div");
+    toDoCard.setAttribute("draggable", "true");
+    toDoCard.innerHTML = 
+    `<div class="todocard">
+        <h1>${title}</h1>
+        <h3>${taskDesc}</h3>
+        <p>${dueDate}</p>
+        <button>Close</button>
+    </div>`;    
+    toDoLane.appendChild(toDoCard);
+}
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {

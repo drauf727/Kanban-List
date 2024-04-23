@@ -14,3 +14,10 @@ body {
 .task-card:hover {
   cursor: grab;
 }
+
+.todocard {
+  background-color: red;
+  color: white;
+  margin: 10px;
+  padding-bottom: 10px;
+}
