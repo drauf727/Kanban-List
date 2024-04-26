@@ -16,8 +16,29 @@ body {
 }
 
 .todocard {
-  background-color: red;
-  color: white;
   margin: 10px;
   padding-bottom: 10px;
+}
+
+.is-dragging{
+  scale: 1.05;
+  background-color: aqua;
+}
+
+#done .todocard{
+  background-color: white;
+  color: black;
+}
+
+.not-due {
+  background-color: white;
+  color: black;
+}
+
+.past-due {
+  background-color: red;
+}
+
+.due-today {
+  background-color: rgba(232, 186, 37, 0.778);
 }
