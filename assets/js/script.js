@@ -7,6 +7,11 @@ const task = [];
 var form = document.querySelector("#kanbanForm");
 const toDoLane = document.querySelector("#todo-cards");
 
+// const closeButton = document.querySelector(".close-button");
+
+// closeButton.addEventListener("submit", () => {
+//     console.log('clicked')
+// })
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -26,12 +31,13 @@ function addCard (nto) {
     taskDesc = nto.taskArea;
     let toDoCard = document.createElement("div");
     toDoCard.setAttribute("draggable", "true");
+    toDoCard.id = generateTaskId(nextId);
     toDoCard.innerHTML = 
     `<div class="todocard">
         <h1>${title}</h1>
         <h3>${taskDesc}</h3>
         <p>${dueDate}</p>
-        <button>Close</button>
+        <button class="close-button">Close</button>
     </div>`;    
     toDoCard.addEventListener("dragstart", () => {
         toDoCard.classList.add("is-dragging");
@@ -105,13 +111,18 @@ const insertAboveTask = (zone, mouseY) => {
 };
 
 
+function generateTaskId() {
+    nextId++;
+    localStorage.setItem('nextId', nextId);
+    return nextId;
+}
 
 
 
 // Todo: create a function to generate a unique task id
-function generateTaskId() {
+// function generateTaskId() {
 
-}
+// }
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
