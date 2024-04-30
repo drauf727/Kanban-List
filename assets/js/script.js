@@ -1,18 +1,20 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
+// let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
+const tasksList = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
 checkDate = dayjs();
-
 const task = [];
 var form = document.querySelector("#kanbanForm");
 const toDoLane = document.querySelector("#todo-cards");
 
-// const closeButton = document.querySelector(".close-button");
+const loadCards = () => {
+    for (let i=0; i<tasksList.length; i++){
+    addCard(tasksList[i]);
+}}
 
-// closeButton.addEventListener("submit", () => {
-//     console.log('clicked')
-// })
+loadCards(tasksList);
 
+// Takes input from form and adds to card
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     var newTask = new FormData(form);
@@ -20,11 +22,12 @@ form.addEventListener("submit", (e) => {
     var newTaskObject = Object.fromEntries(newTask);
     console.log(newTaskObject);
     addCard(newTaskObject);
-    task.push(newTaskObject);
+    tasksList.push(newTaskObject);
+    localStorage.setItem('tasks', JSON.stringify(tasksList));
     form.reset(); 
 })
 
-
+// Adding card to the DOM
 function addCard (nto) {
     title = nto.title;
     dueDate = dayjs(nto.dueDate);
@@ -61,6 +64,7 @@ function addCard (nto) {
     toDoLane.appendChild(toDoCard);
 }
 
+// Adding functionality to drag and drop cards on board
 
 const drag = document.querySelectorAll(".todocard");
 const drop = document.querySelectorAll(".swimlane");
@@ -110,7 +114,7 @@ const insertAboveTask = (zone, mouseY) => {
     return closestTask;
 };
 
-
+// Creates Task ID and adds to local storage
 function generateTaskId() {
     nextId++;
     localStorage.setItem('nextId', nextId);
